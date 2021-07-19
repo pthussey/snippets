@@ -1,0 +1,142 @@
+# Changing a timedelta to number of years from a start date as a floating point value
+# Date and start must be timestamps, subtracting them gives the timedelta
+# This changes it from 'interval' to 'ratio' data that has a zero value which is necessary for some types of analysis
+one_year = np.timedelta64(1, 'Y')
+years = (date - start) / one_year
+
+
+# Iterate over groups in pandas
+for name, group in df.groupby('key'):
+
+
+# Create a dictionary to hold groups of a pandas groupby
+groups = dict(list(df.groupby('key')))
+
+
+# Use pd.pivot_table to create pivot tables for use with heatmaps
+# Using this method prevents messed up plot labels and problems with numerical pivot variables (like 'size' below)
+# The resulting dataframe can be passed directly to sns.heatmap for plotting
+tips_pt = pd.pivot_table(tips, values='tip', index='day', columns='size', aggfunc='mean')
+
+
+# Use na=False in pandas string methods when filtering fails due to NaN values
+df.loc[df['column'].str.contains('string', na=False)]
+
+
+# Generate a list of fitted y sequences for use in dsa.PercentileRows to create a CI for a regression line
+fys_seq = []
+for inter, slope in zip(inters, slopes):
+    fxs, fys = dsa.FitLine(xs, inter, slope)
+    fys_seq.append(fys)
+
+
+# Linear regression using the formula API in statsmodels
+formula = 'y ~ x'
+model = smf.ols(formula, data=df)
+results = model.fit()
+results.summary()
+
+
+# Linear regression using the regular API in statsmodels
+x = sm.add_constant(x)
+model = sm.OLS(y, x)
+results = model.fit() 
+results.summary()
+
+
+# Display more than one cell output
+from IPython.display import display
+display()
+display()
+
+
+# Get values of a multi-index
+df.index.get_level_values(level=1)
+
+
+# Useful for sorting indexes, especially multi-indexes
+df.sort_index()
+
+
+# Display all column values for one entry
+print(df.iloc[idx].to_string())
+
+
+# pandas autocorrelation, just one scalar value returned
+Series.autocorr(lag=1)
+
+
+# statsmodels autocorrelation, returns correlations for all lags up to nlags
+import statsmodels.tsa.stattools as smtsa
+smtsa.acf(data, nlags=365, unbiased=True)
+
+
+# pandas Boolean query
+df.query('var_x in [1,2,3]')
+
+
+# Add a sum total row to the bottom of a Series
+sum_total = series.sum()
+series.loc["total"] = sum_total
+
+
+# Generate a Kaplan-Meier fitter object (kmf) to plot survival function
+# Add duration column which measures time to event
+# Add event column which indicates whether or not event occurred (1,0)
+# Set entry value for each observation if start needs to be something other than zero
+# This kmf object can then be plotted in two ways: kmf.survival_function_.plot() or kmf.plot()
+T = df["duration"]
+E = df["event"]
+
+kmf = KaplanMeierFitter()
+kmf.fit(durations=T, event_observed=E, entry=np.full(shape=len(df), fill_value=10))
+
+
+# lifelines KaplanMeierFitter object (kmf) has an expected remaining lifetime attribute (conditional_time_to_event_)
+# This attribute can be plotted to show the expected remaining lifetime curve
+kmf.conditional_time_to_event_
+
+
+# Get survival probabilities at specific times from a kmf object
+kmf.predict(20)
+
+
+# Parse dates when uploading a file
+date_cols = ['A', 'B']
+pd.read_csv(' ', parse_dates=date_cols, dayfirst=True)
+
+
+# Find locations of null values and print the whole rows
+df[df.isna().any(axis=1)]
+
+
+# Check proportion of non-null values in df variables
+df.notnull().mean()
+
+
+# Include missing values in value_counts and view variable proportions by normalizing
+df.variable.value_counts(dropna=False, normalize=True)
+
+
+# Check if a column of strings contains any numbers encoded as strings
+df[df.column.str.contains("\d+", na=False)]
+
+
+# Use .style to with background_gradient to create a heatmap from a crosstab without plotting
+(pd.crosstab(index=tips.day, columns=tips.sex, values=tips.tip, aggfunc='mean')
+.style.background_gradient(cmap='Blues')
+.format('{:.2f}'))
+
+
+# List the type of each element in a column
+df.variable.apply(type)
+
+
+# Change strings into underlying types
+# Example, if lists are imported as strings
+df['variable'] = df['variable'].apply(eval)
+
+
+# Create a 1D series from a column of lists in a dataframe
+# Can then use value_counts() to get the count of entries in the lists
+pd.Series([x for _list in df['variable'] for x in _list])

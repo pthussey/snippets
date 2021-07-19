@@ -1,0 +1,2 @@
+# Create a dataframe from a wikipedia table
+df = pd.read_html('https://en.wikipedia.org/wiki/List_of_Korean_surnames')[0]

@@ -1,0 +1,29 @@
+# Sort a list by key using a lambda function, in this example by item length
+item_list.sort(key=lambda x: len(x))
+
+
+# Sort a dictionary by key using a lambda function, in this example using just a default sort
+item_list = dict(sorted(item_list.items(), key=lambda x: x[0]))
+
+
+# List comprehension using if only
+[f(x) for x in sequence if condition]
+
+
+# List comprehension using if and else
+[f(x) if condition else g(x) for x in sequence]
+
+# Iterate over a specified filetype (in this case text files) in the cwd
+For file in os.listdir(os.getcwd()):
+    if '.txt' in file:
+        doStuff()
+
+
+# Regex that matches any repeated character in a string
+pair = re.compile(r'''
+    .*    # Match any number of any charaters
+    (.)   # Match 1 character, whatever it is (except new-line), this will be the "group 1"
+    .*    # Match any number of any charaters
+    \1    # Match the group 1
+''', re.VERBOSE)
+pair.match('abcdefgc').groups()[0]
