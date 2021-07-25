@@ -80,6 +80,10 @@ ax.set_axisbelow(True)
 ax.grid(False)
 
 
+# Remove just one axis grid lines
+ax.xaxis.grid(False)
+
+
 # Adjust spacing around subplots
 plt.subplots_adjust()
 
