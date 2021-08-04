@@ -273,8 +273,8 @@ plt.legend((p1[0], p2[0]), ('values1', 'values2'))
 # The zero line is only used to show the pvalue in the case that the null hypothesis is zero
 ax.plot(rv.xk, rv.cdf(rv.xk))
 ax.axvline(rv.mean(), color='C1', lw=1.3) # mean, orange line
-ax.axvline(rv.ppf(.05), color='C2', lw=1.3) # CI lower, green line
-ax.axvline(rv.ppf(.95), color='C2', lw=1.3) # CI upper, green line
+ax.axvline(rv.interval(0.95)[0], color='C4', lw=1.3, label='CI') # CI lower, green line
+ax.axvline(rv.interval(0.95)[1], color='C4', lw=1.3) # CI upper, green line
 ax.axvline(0, color='C3', lw=1.3) # p-value (if comparing with zero), red line
 
 
