@@ -140,3 +140,6 @@ df['variable'] = df['variable'].apply(eval)
 # Create a 1D series from a column of lists in a dataframe
 # Can then use value_counts() to get the count of entries in the lists
 pd.Series([x for _list in df['variable'] for x in _list])
+
+# Change a 1D array into a column vector
+new_a = [:, np.newaxis]
