@@ -1,0 +1,28 @@
+To create a conda virtual environment and load packages
+1) conda create --name my_env python=3.7
+2) conda activate my_env
+3) conda install package1 package2...
+
+To add a conda environment as a kernel in jupyter notebook
+Option 1: Add individually in new environments
+- activate myenv
+- conda install ipykernel
+- ipython kernel install --user --name=my-conda-env-kernel
+Option 2: Set up to automatically add any environment that has ipykernel installed
+- In the base environment (just do this once): conda install nb_conda_kernels
+- In new environments: conda install ipykernel
+https://stackoverflow.com/questions/58068818/how-to-use-jupyter-notebooks-in-a-conda-environment/
+
+If run into 700 errors when creating environments do the following:
+step 1) launch Anaconda prompt (as Admin)
+step 2) delete the bad install folder in ~\Anaconda3\envs
+step 3) conda clean -all
+
+To use pip within the environment to install packages
+C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip install
+
+To view a pip requirements file from a conda environment
+C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze
+
+To export a pip requirements file from a conda environment
+C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze > requirements.txt
