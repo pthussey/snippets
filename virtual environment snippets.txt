@@ -24,5 +24,5 @@ C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip install
 To view a pip requirements file from a conda environment
 C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze
 
-To export a pip requirements file from a conda environment
-C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze > requirements.txt
+To export a environment to a yaml file
+conda env export --name envname > envname.yml
