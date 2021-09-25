@@ -17,12 +17,16 @@ If run into 700 errors when creating environments do the following:
 step 1) launch Anaconda prompt (as Admin)
 step 2) delete the bad install folder in ~\Anaconda3\envs
 step 3) conda clean -all
+* conda clean should also be used after updating conda to remove unused dependency files
 
 To use pip within the environment to install packages
 C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip install
 
 To view a pip requirements file from a conda environment
 C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze
+
+To export a pip requirements file from a conda environment
+C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze > requirements.txt
 
 To export a environment to a yaml file
 conda env export --name envname > envname.yml
