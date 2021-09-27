@@ -30,3 +30,7 @@ C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze > 
 
 To export a environment to a yaml file
 conda env export --name envname > envname.yml
+
+To remove the prefix at the bottom of the yaml file use | grep -v "prefix"
+* --from-history just ensures that the environment works across different OS
+conda env export --from-history | grep -v "prefix" > environment.yml
