@@ -75,3 +75,7 @@ pip install -r requirements.txt
 
 To remove an environment just delete the directory
 rmdir environment_name /s
+
+To remove the prefix at the bottom of the yaml file use | grep -v "prefix"
+* --from-history just ensures that the environment works across different OS
+conda env export --from-history | grep -v "prefix" > environment.yml
