@@ -1,16 +1,23 @@
+conda environments
+
 To create a conda virtual environment and load packages
-1) conda create --name my_env python=3.7
+1) conda create --name my_env
+   * optionally specify python version but not really necessary (python=3.7)
 2) conda activate my_env
 3) conda install package1 package2...
 
-To add a conda environment as a kernel in jupyter notebook
+To add a jupyter notebook kernel to a conda environment (option #2 seems to work best)
 Option 1: Add individually in new environments
 - activate myenv
 - conda install ipykernel
 - ipython kernel install --user --name=my-conda-env-kernel
 Option 2: Set up to automatically add any environment that has ipykernel installed
-- In the base environment (just do this once): conda install nb_conda_kernels
-- In new environments: conda install ipykernel
+- In the base environment (just do this once): 
+  conda install -c conda-forge notebook
+  conda install -c conda-forge nb_conda_kernels
+- In new environments: 
+  conda install ipykernel
+https://towardsdatascience.com/how-to-set-up-anaconda-and-jupyter-notebook-the-right-way-de3b7623ea4a
 https://stackoverflow.com/questions/58068818/how-to-use-jupyter-notebooks-in-a-conda-environment/
 
 If run into 700 errors when creating environments do the following:
@@ -19,14 +26,52 @@ step 2) delete the bad install folder in ~\Anaconda3\envs
 step 3) conda clean -all
 * conda clean should also be used after updating conda to remove unused dependency files
 
-To use pip within the environment to install packages
-C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip install
+To use pip within the environment to install packages (not recommended, use conda install whenever possible)
+pip install
+OR if the path needs to be specified:
+C:\Users\usr\Anaconda3\envs\name_env\python.exe -m pip install
 
 To view a pip requirements file from a conda environment
-C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze
+OR if the path needs to be specified:
+C:\Users\usr\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze
 
 To export a pip requirements file from a conda environment
-C:\Users\pthus\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze > requirements.txt
+OR if the path needs to be specified:
+C:\Users\usr\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze > requirements.txt
 
 To export a environment to a yaml file
 conda env export --name envname > envname.yml
+The conda docs recommend to always just make the yml file by hand
+This can be done by just creating the file:
+conda env create --file environment.yml
+Then writing the dependencies in a very simple way:
+name: basic_analysis
+dependencies:
+  - numpy
+  - pandas
+When someone else uses this file the conda solver will install the dependencies properly for their platform
+
+
+venv environments
+
+To create a new environment
+* First navigate to the folder that will hold the environment directory
+python -m venv environment_name
+
+To activate the environment
+environment_name\Scripts\activate.bat
+
+To install packages
+pip install package_name
+
+Adding the virtual environment to Jupyter 
+pip install ipykernel
+python -m ipykernel install --name=environment_name
+* This should print: Installed kernelspec myenv in /home/user/.local/share/jupyter/kernels/environment_name
+
+To create a new environment via a requirements file
+* First create the new environment and then install dependencies via the file
+pip install -r requirements.txt
+
+To remove an environment just delete the directory
+rmdir environment_name /s

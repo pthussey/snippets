@@ -1,0 +1,12 @@
+miniconda install
+
+1) Install miniconda
+* If do not add to PATH then need to go in to environment variables and add (change to my user path):
+C:\Users\usr\miniconda3
+C:\Users\usr\miniconda3\Scripts
+C:\Users\usr\miniconda3\Library\bin
+
+2) Activate the base environment and install the main packages I use:
+conda install pandas matplotlib seaborn scipy statsmodels
+* dependency packages like numpy also get installed with these
+* see the virtual environment snippets for details on how to install Jupyter notebook
