@@ -19,6 +19,13 @@ Option 2: Set up to automatically add any environment that has ipykernel install
   conda install ipykernel
 https://towardsdatascience.com/how-to-set-up-anaconda-and-jupyter-notebook-the-right-way-de3b7623ea4a
 https://stackoverflow.com/questions/58068818/how-to-use-jupyter-notebooks-in-a-conda-environment/
+* If the jupyter kernel for a new environment will not run, check the command line window error message
+  If the error is in relation to a module called ipython_genutils then pip install the following in the new environment:
+  pip install ipython_genutils
+
+* To remove unwanted jupyter kernels run the following at the command line:
+jupyter kernelspec list
+jupyter kernelspec uninstall unwanted-kernel
 
 If run into 700 errors when creating environments do the following:
 step 1) launch Anaconda prompt (as Admin)
@@ -29,15 +36,15 @@ step 3) conda clean -all
 To use pip within the environment to install packages (not recommended, use conda install whenever possible)
 pip install
 OR if the path needs to be specified:
-C:\Users\usr\Anaconda3\envs\name_env\python.exe -m pip install
+C:\Users\user\miniconda3\envs\name_env\python.exe -m pip install
 
 To view a pip requirements file from a conda environment
 OR if the path needs to be specified:
-C:\Users\usr\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze
+C:\Users\user\miniconda3\envs\name_env\python.exe -m pip list --format=freeze
 
 To export a pip requirements file from a conda environment
 OR if the path needs to be specified:
-C:\Users\usr\Anaconda3\envs\name_env\python.exe -m pip list --format=freeze > requirements.txt
+C:\Users\user\miniconda3\envs\name_env\python.exe -m pip list --format=freeze > requirements.txt
 
 To export a environment to a yaml file
 conda env export --name envname > envname.yml
