@@ -5,6 +5,8 @@ miniconda install
 C:\Users\usr\miniconda3
 C:\Users\usr\miniconda3\Scripts
 C:\Users\usr\miniconda3\Library\bin
+* Check "App execution aliases" in the Windows search box and make sure the two Python related ones are switched off
+  If this is not done python will not run from the command line and the Windows app store will open instead
 
 2) Activate the base environment and install the main packages I use:
 conda install pandas matplotlib seaborn scipy statsmodels

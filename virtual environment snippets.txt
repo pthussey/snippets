@@ -58,6 +58,8 @@ dependencies:
   - pandas
 When someone else uses this file the conda solver will install the dependencies properly for their platform
 
+To create an environment from a yaml file:
+conda env create --file envname.yml
 
 venv environments
 
