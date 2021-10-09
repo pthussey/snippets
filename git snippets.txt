@@ -2,6 +2,7 @@ To create a new repository using GitHub Desktop:
 1. Click on File - New Repository
 2. Choose a name for the repository
    * This will create a folder in the chosen Local Path
+3. Enter other details and Create Repository
    
 How to create a github repo from an existing folder using GitHub Desktop:
 1. Add local repository
