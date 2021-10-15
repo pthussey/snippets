@@ -1,5 +1,31 @@
-Create and switch to a new branch
+To create a new repository using GitHub Desktop:
+1. Click on File - New Repository
+2. Choose a name for the repository
+   * This will create a folder in the chosen Local Path
+3. Enter other details and Create Repository
+   
+How to create a github repo from an existing folder using GitHub Desktop:
+1. Add local repository
+2. Choose 'create a repository' from the warning message
+3. Create it and push to github
+
+How to clone one of my repositories so I can work on it on multiple machines
+Cloning one of my own repositories from github to a different machine allows me to work on it from multiple machines.
+Before working on it though I need to pull(?) other changes over to the machine I will work on to keep things in sync.
+Steps in GitHub Desktop:
+1. Go to File - Clone a repository
+2. Choose the folder in Local Path
+   * Do not add a new folder to the path because a new folder with the repo name will be created.
+3. Choose the repository from Your Repositories
+4. Click Clone
+
+To create and switch to a new branch
 git checkout -b ＜new-branch＞
 
-Switch to a branch
+To switch to a branch
 git checkout ＜branchname＞
+
+To merge a branch back into main
+* I did it once via pull request using GitHub Desktop
+* Using pull request works and I read that it is a good practice even though I'm programming by myself
+* Next time I do this make notes on it
