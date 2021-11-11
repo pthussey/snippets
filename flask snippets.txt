@@ -14,3 +14,30 @@ def about():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# A base.html template
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!-- Custom CSS 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}">
+    -->
+
+    {% if title %}
+        <title>{{ title }} - Website</title>
+    {% else %}
+        <title>Website</title>
+    {% endif %}
+
+</head>
+  <body>
+    <header>
+    </header>
+        {% block content %}{% endblock %}
+    <footer>
+    </footer>
+  </body>
+</html>
