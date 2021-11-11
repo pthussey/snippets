@@ -19,6 +19,10 @@ Steps in GitHub Desktop:
 3. Choose the repository from Your Repositories
 4. Click Clone
 
+To initialize a new repository
+Navigate to the folder for the project and use:
+git init
+
 To create and switch to a new branch
 git checkout -b ＜new-branch＞
 
