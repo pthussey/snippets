@@ -29,6 +29,14 @@ git checkout -b ＜new-branch＞
 To switch to a branch
 git checkout ＜branchname＞
 
+To add to staging and commit all files in directory
+git add .
+git status (this is used to view the changes in the staging area before committing)
+git commit
+
+To push changes to the remote
+git push
+
 To merge a branch back into main
 * I did it once via pull request using GitHub Desktop
 * Using pull request works and I read that it is a good practice even though I'm programming by myself
