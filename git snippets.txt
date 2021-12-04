@@ -37,6 +37,10 @@ git commit
 To push changes to the remote
 git push
 
+To delete a branch
+git branch -d <branch>
+(Need to use a capital D if the branch has not yet been pushed and merged
+
 To merge a branch back into main
 * I did it once via pull request using GitHub Desktop
 * Using pull request works and I read that it is a good practice even though I'm programming by myself
