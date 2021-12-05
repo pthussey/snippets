@@ -42,6 +42,7 @@ git branch -d <branch>
 (Need to use a capital D if the branch has not yet been pushed and merged
 
 To merge a branch back into main
-* I did it once via pull request using GitHub Desktop
-* Using pull request works and I read that it is a good practice even though I'm programming by myself
-* Next time I do this make notes on it
+- First make sure the branch is updated with the latest commit
+- Then change to the main branch (git checkout main)
+- Then merge the branch into main (git merge <branch-name>)
+- Then finally delete the branch (git brach -d <branch-name>)
