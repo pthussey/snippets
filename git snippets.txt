@@ -23,16 +23,24 @@ To initialize a new repository
 Navigate to the folder for the project and use:
 git init
 
+To add to staging and commit all files in directory
+git add .
+git status (this is used to view the changes in the staging area before committing)
+git commit
+
+To create a remote repo on GitHub
+- Go to GitHUb and create a new repository
+- After giving it a name and clicking the 'Create Repository' button some options appear
+- Follow the instructions in the "…or push an existing repository from the command line" section:
+git remote add origin https://github.com/pthussey/<repo-name>.git
+git branch -M main
+git push -u origin main
+
 To create and switch to a new branch
 git checkout -b ＜new-branch＞
 
 To switch to a branch
 git checkout ＜branchname＞
-
-To add to staging and commit all files in directory
-git add .
-git status (this is used to view the changes in the staging area before committing)
-git commit
 
 To push changes to the remote
 git push
