@@ -30,7 +30,7 @@ jupyter kernelspec uninstall unwanted-kernel
 If run into 700 errors when creating environments do the following:
 step 1) launch Anaconda prompt (as Admin)
 step 2) delete the bad install folder in ~\Anaconda3\envs
-step 3) conda clean -all
+step 3) conda clean --all
 * conda clean should also be used after updating conda to remove unused dependency files
 
 To use pip within the environment to install packages (not recommended, use conda install whenever possible)
@@ -60,6 +60,9 @@ When someone else uses this file the conda solver will install the dependencies 
 
 To create an environment from a yaml file:
 conda env create --file envname.yml
+
+To remove a conda environment:
+conda env remove -n ENV_NAME
 
 venv environments
 
