@@ -9,9 +9,15 @@ How to create a github repo from an existing folder using GitHub Desktop:
 2. Choose 'create a repository' from the warning message
 3. Create it and push to github
 
+How to add a local repo from an existing github repo
+- This is a cloning action
+- Click the green "Code" button on the github repo
+- Then copy and paste the necessary command line command
+- Or activate github desktop and create it that way
+
 How to clone one of my repositories so I can work on it on multiple machines
 Cloning one of my own repositories from github to a different machine allows me to work on it from multiple machines.
-Before working on it though I need to pull(?) other changes over to the machine I will work on to keep things in sync.
+Before working on it though I need to pull other changes over to the machine I will work on to keep things in sync.
 Steps in GitHub Desktop:
 1. Go to File - Clone a repository
 2. Choose the folder in Local Path
@@ -29,7 +35,7 @@ git status (this is used to view the changes in the staging area before committi
 git commit
 
 To create a remote repo on GitHub
-- Go to GitHUb and create a new repository
+- Go to GitHub and create a new repository
 - After giving it a name and clicking the 'Create Repository' button some options appear
 - Follow the instructions in the "…or push an existing repository from the command line" section:
 git remote add origin https://github.com/pthussey/<repo-name>.git
