@@ -39,10 +39,12 @@ OR if the path needs to be specified:
 C:\Users\user\miniconda3\envs\name_env\python.exe -m pip install
 
 To view a pip requirements file from a conda environment
+pip list --format=freeze
 OR if the path needs to be specified:
 C:\Users\user\miniconda3\envs\name_env\python.exe -m pip list --format=freeze
 
 To export a pip requirements file from a conda environment
+pip list --format=freeze > requirements.txt
 OR if the path needs to be specified:
 C:\Users\user\miniconda3\envs\name_env\python.exe -m pip list --format=freeze > requirements.txt
 
