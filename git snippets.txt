@@ -57,7 +57,7 @@ git branch -d <branch>
 
 To merge a branch back into main
 - First make sure the branch is updated with the latest commit
-- Then change to the main branch (git checkout main)
+- Then change to the main branch (git checkout main/master)
 - Then merge the branch into main (git merge <branch-name>)
 - Then finally delete the branch (git branch -d <branch-name>)
 
