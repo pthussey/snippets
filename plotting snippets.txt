@@ -172,8 +172,8 @@ sns.regplot(x='', y='', data=, ci=90,
 percentiles = [.25,.50,.75]
 
 for p in percentiles:
-    cdfs_at_p = [rv.ppf(p) for rv in res_rvs]
-    ax.plot(x_means, cdfs_at_p, label= p)
+    residual_values_at_p = [rv.ppf(p) for rv in res_rvs]
+    ax.plot(x_means, residual_values_at_p, label= p)
     
 
 # Good settings for scatter plot with many overlapping points
