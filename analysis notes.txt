@@ -17,7 +17,6 @@ df.variable.value_counts()
 # And include dropna=False to include proportion of missing values
 df.variable.value_counts(dropna=False, normalize=True)
 
-
 3) For data sets that have many columns choose which ones to work with
 # Make lists of the numerical and categorical variables
 numerical = []
