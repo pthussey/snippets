@@ -466,9 +466,14 @@ for ax in g.axes:
 
 plt.subplots_adjust(hspace=0.3)
 
-# set aspect ratio(eg. 3:4)
+
+# Set aspect ratio(eg. 3:4)
 ratio=0.75
-# get x and y limits to set aspect ratio
+# Get x and y limits to set aspect ratio
 x_left, x_right = ax.get_xlim()
 y_low, y_high = ax.get_ylim()
 ax.set_aspect(abs((x_right-x_left)/(y_low-y_high))*ratio)
+
+
+# Put legend outside plot
+# ax.legend(frameon=True, bbox_to_anchor=(1.04,1), loc="upper left")
