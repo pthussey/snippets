@@ -1,40 +1,56 @@
 Exploratory data analysis process steps
 
+
 1) Check what variables (columns) are in the data, and their data types
+
 # Basic info about the data set
 df.info()
+
 # List columns
 list(df.columns)
+
 # List columns and their dtypes
 df.info(verbose=True)
 
+
 2) Look at summaries of values that are in the variables
+
 df.describe()
 df.variable.nunique()
 df.variable.unique()
 df.variable.value_counts()
+
 # Can also check the proportions of values in a variable by normalizing
 # And include dropna=False to include proportion of missing values
 df.variable.value_counts(dropna=False, normalize=True)
 
+
 3) For data sets that have many columns choose which ones to work with
+
 # Make lists of the numerical and categorical variables
 numerical = []
 categorical = []
+
 # Combine those into one dataframe
 df = df[numerical + categorical]
 
+
 4) Change data types if necessary
+
 df['variable']= pd.to_datetime(df['variable'])
 df['variable']= df['variable'].astype('int64')
+
 # Convert to categories if needed
 df['variable']= df['variable'].astype('category')
+
 # Convert to ordered categories if needed
 # The categories are the unique values of the variable
 status_type = CategoricalDtype(categories=['A', 'B'], ordered=True)
 df_1['variable'] = df_1['variable'].astype(status_type)
 
+
 5) For important projects create an excel sheet about the variables with the columns:
+
 - Variable (name of the variable)
 - Type (type of the variable)
 - Numerical or categorical
@@ -43,26 +59,33 @@ df_1['variable'] = df_1['variable'].astype(status_type)
 - Conclusion (how strong the variable's influence actually turns out to be)
 - Comments
 
+
 6) Check for missing values by total number (can sort if needed) or by percentage
+
 # Empty strings are not considered null values
 # However if empty strings are exported to csv and then reimported they become null values
 df.isnull().sum()
 df.isnull().sum().sort_values(ascending=False)
+
 # To check proportion of null values in a dataframe
 df.isnull().mean()
 
 # Decide whether to drop or fill missing values later
 # before looking at relationships between variables or computing summary statistics
 
+
 7) Use visualizations like histograms, kde, countplots, and boxplots to see distributions of individual variables
+
 # A good first visualization is pandas hist on all numerical variables
 # This method automatically selects numerical variables if called on the whole dataframe
 # Or can specify columns by subsetting the dataframe using a list of numerical variables as below
 df[numerical].hist(bins=15, figsize=(15, 6), layout=(2, 3))
 plt.tight_layout()
+
 # Can also use seaborn histplot on individual variables
 # Can change kde = True to add the kernel density plot
 sns.histplot(df['variable'], kde=False, bins=20).set(xlabel='Variable Name')
+
 # Can plot the cdfs and the means for all numerical variables using a for loop
 # More notes on this in plotting snippets
 numerical_vars = ['var1', 'var2', 'var3', 'var4']
@@ -78,9 +101,11 @@ for i, var in enumerate(numerical_vars):
     ax.axvline(x=var_rv.mean(), color='C1')
     ax.set_title(var)
 plt.tight_layout()
+
 # For discrete numerical and categorical variables can use countplot for bar chart style distributions
 # Using y instead of x changes to horizontal and hue partitions data by another variable
 sns.countplot(x='variable', data=df)
+
 # Can plot all categorical variables in a dataframe using countplot using a for loop
 # More notes on this in plotting snippets
 categorical_vars = ['var1', 'var2', 'var3', 'var4']
@@ -92,33 +117,51 @@ for i, var in enumerate(categorical_vars):
     g = sns.countplot(x=var, data=df, ax=axs[row][pos])
     g.set_title(var)
 plt.tight_layout()
+
 # Catplot can be used to show faceted countplots of categorical variables
 sns.catplot(x='variable_1', col='variable_2', data=df, kind='count', col_wrap=2)
+
 # Catplot can also be used to show faceted distributions of a numerical variable
 # The y and col parameters facilitate faceting by categorical variables
 # The kind of plot can be changed, see documentation for list of options
 sns.catplot(x='variable_1', y='variable_2', col='variable_3', data=df, kind='swarm')
+
 # Barplot is used to plot an estimate of central tendency for a numerical variable
 # For example average tip by day of the week
 sns.barplot(x="day", y="total_bill", data=tips)
+
 # Point plots can also be used for the same purpose as bar plots
 # To show how central tendency of a numerical variable changes across a categorical variable
 # The example shows how total bill changes across lunch and dinner, further facted by smoker
 sns.pointplot(x="time", y="total_bill", hue="smoker", data=tips, dodge=True) 
+
+# Barplot can also be used to make multiple bar plots showing counts of variables
+sns.barplot(ax=ax, x='Season', y='30+_Scorers', hue='Team', data=df, palette=palette)
+* The above is an example I made up that showed the number of 30+ goal scorers each team had in each season
+* Using this method I no longer need a custom multiple bar values function
+* Just have to build a dataframe first if the data is coming from multiple seperate datasets
+
 # Box plots for all variables
 df.boxplot(figsize=(15, 6))
+
 # Box plots for a single variable
 sns.boxplot(x=df['variable'])
+
 # Can also use a violin plot
 sns.violinplot(x=df['variable'])
+
 # And can facet by a categorical variable as in this example
 sns.violinplot(x="day", y="total_bill", data=tips)
 
+
 8) Fill missing values
+
 # Determine whether to drop or fill records with missing values
 # Filling can be done using the mean, median, or mode if appropriate
 
+
 9) Deal with outliers
+
 # Can be identified using boxplots
 # If outliers are measurement errors see if the measure can be fixed or remeasured
 # If error cannot be fixed or remeasured then should be removed
@@ -126,16 +169,21 @@ sns.violinplot(x="day", y="total_bill", data=tips)
 # Document any removal of outliers
 # Can show results that included and exclude outliers to show the difference
 
+
 10) Explore relationships between variables
+
 # Use pairplot to show relationships between all numerical variables
 # Change kind to 'reg' to add regression lines
 # Can add a hue to facet the data by a categorical variable
 sns.pairplot(df, kind='scatter')
+
 # Use a regplot to show relationship between just two variables
 sns.regplot(x='total_bill', y='tip', data=tips)
+
 # Can also use a heatmap to visualize correlations between all numerical variables
 mask = np.tril(df.corr())
 sns.heatmap(df.corr(), cmap='Blues', annot=True, mask=mask)
+
 # To visualize the relationship between two categorical variables use bar charts showing proportions/percentages
 x,hue = 'var1','var2'
 df1 = (df.groupby(x)[hue]
@@ -145,19 +193,24 @@ df1 = (df.groupby(x)[hue]
        .reset_index())
 g = sns.catplot(x=x, y='percentage', hue=hue, kind='bar', data=df1)
 g.ax.set_ylim(0,100)
+
 # Can also use a heatmap to show how a numerical variable varies across multiple categorical variables
 # For example tips by day and table size
 tips_pt = pd.pivot_table(tips, values='tip', index='day', columns='size', aggfunc='mean')
 sns.heatmap(data=tips_pt, cmap='Blues', annot=True)
 
+
 11) Compute key summary statistics for variables of interest
+
 # Only use summary statistics if unimodal.
 # Only use mean and std if normally distributed.
 # If not normally distributed, or if important outliers are present, use median and iqr instead.
 # Can report the correlation value (r) to show the strength of a relationship between two numerical variables
 # The r value, along with p-value and CI, can be included with a scatter/regression plot
+
 # Can report the p-value from chi-square test to show relationship between two categorical variables
 stats.chi2_contingency(pd.crosstab(index=df.var1, columns=df.var2))
+
 
 12) Decide which statistics and visualizations are most important to include in a report or presentation
 
@@ -192,11 +245,16 @@ Procedure for calculating and plotting a linear regression with a CI, and checki
 
 
 General procedure for using resampling to get a CI for a calculated sequence
+
 1) Get low and high values from the variable in question
+
 2) Create a range of xs (low to high) and set a spacing frequency
+
 3) Build a list of sequences by resampling the dataframe (with replacement) multiple times.
    Each time performing the calculation in question on the variable and adding the result to the sequence list 
+   
 4) Select the percentile rows needed to plot the low and high lines of the CI
+
 5) Plot the CI using a fill between plot
 Example from ThinkStats calculating the CI for the age until marriage survival function, using a separate function EstimateMarriageSurvival:
 def ResampleSurvival(resp, iters=101):
