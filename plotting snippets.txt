@@ -401,7 +401,8 @@ df1 = (df.groupby(x)[hue]
        .value_counts(normalize=True)
        .mul(100)
        .rename('percentage')
-       .reset_index())
+       .reset_index()
+       .rename(columns={'level_1':hue}))
 g = sns.catplot(x=x, y='percentage', hue=hue, kind='bar', data=df1)
 g.ax.set_ylim(0,100)
 
