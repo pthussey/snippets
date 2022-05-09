@@ -86,37 +86,17 @@ plt.tight_layout()
 # Can change kde = True to add the kernel density plot
 sns.histplot(df['variable'], kde=False, bins=20).set(xlabel='Variable Name')
 
-# Can plot the cdfs and the means for all numerical variables using a for loop
-# More notes on this in plotting snippets
-numerical_vars = ['var1', 'var2', 'var3', 'var4']
-fig, axs = plt.subplots(nrows=2, ncols=2, sharex=False)
-fig.set_size_inches(8,6)
-for i, var in enumerate(numerical_vars):
-    val,cnt = np.unique(df[var].dropna(), return_counts=True)
-    var_rv = stats.rv_discrete(values=(val,cnt/sum(cnt)))
-    row = i//2
-    pos = i % 2
-    ax=axs[row][pos]
-    ax.plot(var_rv.xk, var_rv.cdf(var_rv.xk))
-    ax.axvline(x=var_rv.mean(), color='C1')
-    ax.set_title(var)
-plt.tight_layout()
+# Can plot the cdfs and the means for all numerical variables
+# This can be done using the DataStats Plotting AllNumVarDensityPlot, can also change kind to kde using this function
+# Can also find the code for doing this in plotting snippets, search for "Plot cdfs of all numerical variables"
 
-# For discrete numerical and categorical variables can use countplot for bar chart style distributions
+# For discrete numerical and categorical variables can use countplot to show counts of categories using a bar chart style
 # Using y instead of x changes to horizontal and hue partitions data by another variable
 sns.countplot(x='variable', data=df)
 
-# Can plot all categorical variables in a dataframe using countplot using a for loop
-# More notes on this in plotting snippets
-categorical_vars = ['var1', 'var2', 'var3', 'var4']
-fig, axs = plt.subplots(nrows=2, ncols=2, sharex=False)
-fig.set_size_inches(8,6)
-for i, var in enumerate(categorical_vars):
-    row = i//2
-    pos = i % 2
-    g = sns.countplot(x=var, data=df, ax=axs[row][pos])
-    g.set_title(var)
-plt.tight_layout()
+# Can plot all categorical variables in a dataframe using countplot
+# This can be done using the DataStats Plotting AllCatVarCountPlot
+# Can also find the code for doing this in plotting snippets, search for "Plot multiple categorical variables"
 
 # Catplot can be used to show faceted countplots of categorical variables
 sns.catplot(x='variable_1', col='variable_2', data=df, kind='count', col_wrap=2)
@@ -184,15 +164,9 @@ sns.regplot(x='total_bill', y='tip', data=tips)
 mask = np.tril(df.corr())
 sns.heatmap(df.corr(), cmap='Blues', annot=True, mask=mask)
 
-# To visualize the relationship between two categorical variables use bar charts showing proportions/percentages
-x,hue = 'var1','var2'
-df1 = (df.groupby(x)[hue]
-       .value_counts(normalize=True)
-       .mul(100)
-       .rename('percentage')
-       .reset_index())
-g = sns.catplot(x=x, y='percentage', hue=hue, kind='bar', data=df1)
-g.ax.set_ylim(0,100)
+# Can visualize the relationship between two categorical variables using bar charts showing proportions/percentages
+# This can be done using the DataStats Plotting TwoCatProportionPlot
+# Can also find the code for doing this in plotting snippets, search for "relationship between two categorical variables"
 
 # Can also use a heatmap to show how a numerical variable varies across multiple categorical variables
 # For example tips by day and table size
