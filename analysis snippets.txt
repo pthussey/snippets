@@ -10,6 +10,7 @@ for name, group in df.groupby('key'):
 
 
 # Create a dictionary to hold groups of a pandas groupby
+# Each group is its own small DataFrame
 groups = dict(list(df.groupby('key')))
 
 
