@@ -414,7 +414,7 @@ sns.heatmap(df.corr(), cmap='coolwarm, center=0.0, annot=True, mask=mask)
 
 
 # Plot multiple heatmaps for a categorical variable using groupby
-# This only creates plots in one vertical row or one vertical column
+# This only creates plots in one horizontal row or one vertical column
 # Need to adjust nrows/ncols, sharex/sharey, and fig size as needed
 fig, axs = plt.subplots(nrows=1, ncols=3, sharex=False, sharey=True)
 fig.set_size_inches(16,4)
