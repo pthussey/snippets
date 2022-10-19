@@ -68,3 +68,6 @@ To go back to the head (tip) use git checkout <brachname> (ie. git checkout main
 To restore a file from a previous commit
 git checkout [commit ID] -- path/to/file
 From this source: https://dev.to/lofiandcode/git-and-github-how-to-revert-a-single-file-dha
+
+List all tracked files in a repository
+git ls-tree -r master --name-only
