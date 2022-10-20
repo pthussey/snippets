@@ -71,3 +71,14 @@ From this source: https://dev.to/lofiandcode/git-and-github-how-to-revert-a-sing
 
 List all tracked files in a repository
 git ls-tree -r master --name-only
+
+To add a file to .gitignore
+just add the filename to the .gitignore text file
+For a folder and all it's contents
+add foldername/
+
+Remove files from the git index
+git rm --cached filename
+
+Remove a folder from the git index
+git rm -r --cached directory_name/
