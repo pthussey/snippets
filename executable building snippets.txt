@@ -1,0 +1,21 @@
+Using pyinstaller:
+
+Set up a virtual environment (if not already done for the project) and activate it
+conda create --name my_env python=3
+activate my_env
+
+Then pip install pyinstaller and any dependencies of the program.
+Need to check what the imports are and install any third party ones
+pip install pyinstaller package1 package2...
+* Seems like pip installing creates smaller distribution packages
+
+Then run pyinstaller using one of the two options below:
+
+1) Bundling to one folder
+pyinstaller myscript.py
+
+2 Bundling to one file
+pyinstaller --onefile myscript.py
+
+More information can be found here:
+https://pyinstaller.org/en/stable/operating-mode.html#bundling-to-one-file
