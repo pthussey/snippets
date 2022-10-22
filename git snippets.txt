@@ -64,3 +64,21 @@ To merge a branch back into main
 To navigate around previous commits use git log to see the commit IDs
 Then use git checkout <commit ID>
 To go back to the head (tip) use git checkout <brachname> (ie. git checkout main)
+
+To restore a file from a previous commit
+git checkout [commit ID] -- path/to/file
+From this source: https://dev.to/lofiandcode/git-and-github-how-to-revert-a-single-file-dha
+
+List all tracked files in a repository
+git ls-tree -r master --name-only
+
+To add a file to .gitignore
+just add the filename to the .gitignore text file
+For a folder and all it's contents
+add foldername/
+
+Remove files from the git index
+git rm --cached filename
+
+Remove a folder from the git index
+git rm -r --cached directory_name/
