@@ -89,6 +89,12 @@ ax.grid(False)
 ax.xaxis.grid(False)
 
 
+# Remove a subplot axis entirely
+# Useful for removing an extra axis on a grid of plots 
+# to put something else, like a legend, in its place
+axes[1,1].remove()
+
+
 # Adjust spacing around subplots
 plt.subplots_adjust()
 
