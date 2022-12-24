@@ -273,7 +273,7 @@ plt.yticks(np.arange(0, 81, 10))
 plt.legend((p1[0], p2[0]), ('values1', 'values2'))
 
 
-# Reverse the order of the legend
+# Add a legend with reversed label order
 handles, labels = ax.get_legend_handles_labels()
 ax.legend(handles[::-1], labels[::-1])
 
