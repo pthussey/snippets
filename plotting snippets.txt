@@ -67,9 +67,31 @@ color='#b8b3b0'
 print(plt.rcParams['axes.prop_cycle'].by_key()['color'])
 
 
+# Get hex values for different seaborn palettes
+# Example below is for the "deep" version of the seaborn's matplotlib palette
+pal = sns.color_palette("deep")
+print(pal.as_hex())
+
+
+# Some seaborn palettes
+- deep : ['#4878d0', '#ee854a', '#6acc64', '#d65f5f', '#956cb4', '#8c613c', '#dc7ec0', '#797979', '#d5bb67', '#82c6e2']
+- muted : ['#4878d0', '#ee854a', '#6acc64', '#d65f5f', '#956cb4', '#8c613c', '#dc7ec0', '#797979', '#d5bb67', '#82c6e2']
+- colorblind : ['#0173b2', '#de8f05', '#029e73', '#d55e00', '#cc78bc', '#ca9161', '#fbafe4', '#949494', '#ece133', '#56b4e9']
+
+
+# Set a palette that will be applied to seaborn and matplotlib plots using rcParams
+# Below example uses seaborn "deep" palette
+plt.rcParams['axes.prop_cycle'] = plt.cycler(color=['#4878d0', '#ee854a', '#6acc64', '#d65f5f', '#956cb4', '#8c613c', '#dc7ec0', '#797979', '#d5bb67', '#82c6e2'])
+
+
 # Setting for a muted blue-red diverging color palette
 # Or can just use coolwarm for a brighter one
 cmap = sns.diverging_palette(220, 20, as_cmap=True)
+
+
+# Good contrasting colors for comparing two variables
+# Pass as a parameter in seaborn plotting functions
+palette = sns.color_palette(palette = ["SteelBlue" , "Salmon"])
 
 
 # Remove plot axis and label
@@ -488,3 +510,20 @@ ax.legend(frameon=True, bbox_to_anchor=(1.04,1), loc="upper left")
 
 # Rotate xticks of a subplot
 ax.tick_params(labelrotation=45)
+
+
+# Example of using seaborn FacetGrid
+# Can just change height to make the plots bigger,
+# or also use aspect as well to fully control size
+g = sns.FacetGrid(penguins, col="sex", height=3.5, aspect=.75)
+
+
+# Method to gain control over setting different colors for subplots in seaborn
+# If it will be faceted by another variable too, 
+# then need to add 'y' to the function definition, y=y to the plot call in the function, 
+# and then add a column argument FacetGrid function call
+def fixed_boxplot(x, *args, label=None, **kwargs):
+    sns.boxplot(x=x, *args, **kwargs, labels=[label])
+
+g = sns.FacetGrid(df_county, row='var1', hue='var1', height=5)
+g.map(fixed_boxplot, 'var2')
