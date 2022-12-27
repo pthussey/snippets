@@ -8,6 +8,12 @@ with sns.axes_style('darkgrid'):
     make_a_plot
 
 
+# Can view all the style parameters that can be changed using the axes_style function
+sns.axes_style()
+# Can then change seaborn axis parameters using set_style function
+sns.set_style("darkgrid", {"axes.facecolor": ".9"})
+
+
 # Set up figure (single plot)
 fig,ax = plt.subplots()
 fig.set_size_inches(8,6)
