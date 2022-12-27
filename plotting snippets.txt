@@ -1,9 +1,10 @@
 # Set a plot style
-plt.style.use('seaborn')
+# Available styles: white, dark, whitegrid, darkgrid, ticks
+sns.set_style('whitegrid')
 
 
 # Temporarily set a new style
-with plt.style.context('seaborn-whitegrid'):
+with sns.axes_style('darkgrid'):
     make_a_plot
 
 
