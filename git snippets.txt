@@ -15,6 +15,8 @@ How to add a local repo from an existing github repo
 - Change to https and copy the url
 - switch to the working directory where the repo directory will go (a new directory with the repo name will be created when cloning)
 - type "git clone" followed by the pasted url
+* This should be the same as the action described in the next entry below this one
+* Once this is done a commit will ask for identification and authorization through the browser
 
 How to clone one of my repositories so I can work on it on multiple machines
 Cloning one of my own repositories from github to a different machine allows me to work on it from multiple machines.
