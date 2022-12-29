@@ -526,9 +526,11 @@ ax.tick_params(labelrotation=45)
 
 
 # Example of using seaborn FacetGrid
+# Set up the grid first and then map the kind of plot and the numerical variable
 # Can just change height to make the plots bigger,
 # or also use aspect as well to fully control size
 g = sns.FacetGrid(penguins, col="sex", height=3.5, aspect=.75)
+g.map(sns.histplot, 'bill_length_mm')
 
 
 # Method to gain control over setting different colors for subplots in seaborn
