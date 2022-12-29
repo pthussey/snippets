@@ -544,3 +544,12 @@ def fixed_boxplot(x, *args, label=None, **kwargs):
 
 g = sns.FacetGrid(df_county, row='var1', hue='var1', height=5)
 g.map(fixed_boxplot, 'var2')
+
+
+# Entirely custom legend
+from matplotlib.lines import Line2D
+custom_lines = [Line2D([0], [0], color='C0', lw=4),
+                Line2D([0], [0], color='C1', lw=4),
+                Line2D([0], [0], color='C2', lw=4)]
+
+ax.legend(custom_lines, ['Group1', 'Group2', 'Group3'])
