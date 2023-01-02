@@ -147,18 +147,19 @@ fig.autofmt_xdate()
 
 
 # Add thousands separator to y-axis labels
-ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
+ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p : '{:,.0f}'.format(int(x))))
 
 
 # Format axis ticks using string formats (example below adds dollar symbol and thousands separator)
-ax.get_yaxis().set_major_formatter(
-    matplotlib.ticker.FuncFormatter(
-        lambda x, p: format(float(x), '${:,.0f}')))
+ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p : '${:,.0f}'.format(int(x))))
+
+
+# Format axis ticks using to convert to thousands of dollars using 'K' symbol for thousands
+ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p : '${:,.0f}K'.format(int(x//1000))))
         
 
 # Format axis ticks using a function
-ax.get_yaxis().set_major_formatter(
-    matplotlib.ticker.FuncFormatter(lambda x,p : funcname(x)))
+ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x,p : funcname(x)))
 
 
 # Split any two word tick labels onto two lines
