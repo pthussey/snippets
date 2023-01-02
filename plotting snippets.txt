@@ -124,6 +124,10 @@ ax.grid(False)
 ax.xaxis.grid(False)
 
 
+# Seaborn despine function
+#sns.despine()
+
+
 # Remove a subplot axis entirely
 # Useful for removing an extra axis on a grid of plots 
 # to put something else, like a legend, in its place
@@ -410,7 +414,7 @@ for x,y in enumerate(data.values):
                  fontsize=12,
                  weight='normal', color='0.4')
         
-dsp.Despine(ax, spines='toprightleft')
+dsplt.Despine(ax, spines='toprightleft')
 
 plt.show()
 
