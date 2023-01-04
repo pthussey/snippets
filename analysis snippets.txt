@@ -153,3 +153,11 @@ df.drop(df[df.score < 50].index, inplace=True)
 
 # Move a column to a new position in a DataFrame
 df.insert(0, 'variable', df.pop('variable'))
+
+# Bin data from a numerical variable in a dataframe and output a table (Series) of the results
+# Define the bins with a sequence of values (eg. bins=[1,5,10,15,20]
+# sort_index() ensures the table is sorted in the correct order of the bins not the values
+# Can also use sort=False in value_counts for the same effect as sort_index(), sort=True, which is the default, sorts by value frequencies
+# Can add .plot(kind='bar') to the end of the code below to turn the table into a plot
+
+pd.cut(x=df.var, bins=bins).value_counts().sort_index()
