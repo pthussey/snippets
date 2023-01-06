@@ -558,3 +558,11 @@ custom_lines = [Line2D([0], [0], color='C0', lw=4),
                 Line2D([0], [0], color='C2', lw=4)]
 
 ax.legend(custom_lines, ['Group1', 'Group2', 'Group3'])
+
+
+# Draw filled in vertical spans (rectangles) across a plot
+ax.axvspan(1, 5, color='C1', alpha=.7)
+
+# Example of grey-colored vertical spans to show standard deviations
+ax.axvspan(data_mean - data_std, data_mean + data_std, color='darkgrey', alpha=.7)
+ax.axvspan(data_mean - 2*data_std, data_mean + 2*data_std, color='lightgrey', alpha=.7)
