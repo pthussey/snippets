@@ -566,3 +566,37 @@ ax.axvspan(1, 5, color='C1', alpha=.7)
 # Example of grey-colored vertical spans to show standard deviations
 ax.axvspan(data_mean - data_std, data_mean + data_std, color='darkgrey', alpha=.7)
 ax.axvspan(data_mean - 2*data_std, data_mean + 2*data_std, color='lightgrey', alpha=.7)
+
+
+# Geoplotting with Geopandas
+
+# Import
+import geopandas as gpd
+
+# Read in the shapefile for the map
+# Note that this should come as a set of files and the all have to be in the working directory to load
+map_df = gpd.read_file('shapefile_name.shp')
+
+# Try an empty plot of the map
+map_df.plot()
+
+# Merge with dataframe that hold the data to be plotted on the map
+# Ensure the column(s) that will be merged on are named the same and the values all match
+# Note that the geopandas dataframe must be the one being merged on to (left in this case)
+# Can also use a list of columns in the 'on' parameter to merge on multiple columns (like a multi-index)
+merged_df = pd.merge(map_df, df_data, how='left', on='merge_column_name')
+
+# Map the data
+
+# Set the variable that will be plotted
+variable = 'var_name'
+
+# Create the figure and axes
+fig, ax = plt.subplots(1, figsize=(10, 6))
+
+# Create the map
+merged_df.plot(column=variable, cmap='viridis', vmin=1, vmax=55, linewidth=0.1, ax=ax)
+
+ax.axis('off')
+
+plt.show()
