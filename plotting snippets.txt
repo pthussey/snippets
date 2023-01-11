@@ -588,15 +588,16 @@ merged_df = pd.merge(map_df, df_data, how='left', on='merge_column_name')
 
 # Map the data
 
-# Set the variable that will be plotted
-variable = 'var_name'
-
 # Create the figure and axes
-fig, ax = plt.subplots(1, figsize=(10, 6))
+fig,ax = plt.subplots()
+fig.set_size_inches(10,6)
 
 # Create the map
-merged_df.plot(column=variable, cmap='viridis', vmin=1, vmax=55, linewidth=0.1, ax=ax)
+# Can change the cmap legend size using the shrink legend keyword
+merged_df.plot(column='variable', cmap='viridis', vmin=1, vmax=55, linewidth=0.1, edgecolor='0.8', ax=ax, 
+               legend=True, legend_kwds={'shrink':.5})
 
 ax.axis('off')
+ax.set_title('Title')
 
 plt.show()
