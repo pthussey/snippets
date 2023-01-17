@@ -107,6 +107,16 @@ cmap = sns.diverging_palette(220, 20, as_cmap=True)
 palette = sns.color_palette(palette = ["SteelBlue" , "Salmon"])
 
 
+# Good color palette for a low number of groups (up to 6)
+# Good choice for ordinal groups, such as likert scale data
+# Also works well for heatmaps or geo plotting
+# Colors are quite low key but also has good contrast for people with colorblindness
+# Can pass as a parameter in seaborn plotting functions
+palette = sns.color_palette("cividis")
+# Can also use as a cmap
+sns.color_palette("cividis", as_cmap=True)
+
+
 # Remove plot axis and label
 ax.yaxis.set_visible(False)
 
