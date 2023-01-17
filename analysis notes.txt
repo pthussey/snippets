@@ -164,6 +164,9 @@ sns.regplot(x='total_bill', y='tip', data=tips)
 mask = np.tril(df.corr())
 sns.heatmap(df.corr(), cmap='Blues', annot=True, mask=mask)
 
+# Can use contingency tables for looking at the relationship between two categorical variables
+pd.crosstab(index= df['var1'], columns=df['var2'], margins=True)
+
 # Can visualize the relationship between two categorical variables using bar charts showing proportions/percentages
 # This can be done using the DataStats Plotting TwoCatProportionPlot
 # Can also find the code for doing this in plotting snippets, search for "relationship between two categorical variables"
