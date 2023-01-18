@@ -38,7 +38,9 @@ df = df[numerical + categorical]
 4) Change data types if necessary
 
 df['variable']= pd.to_datetime(df['variable'])
-df['variable']= df['variable'].astype('int64')
+df['variable']= df['variable'].astype('Int64')
+# Note that just using 'int' as the dtype with astype will result in errors if column contains NaN
+# Need to use Int64
 
 # Convert to categories if needed
 df['variable']= df['variable'].astype('category')
