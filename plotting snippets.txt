@@ -329,6 +329,12 @@ plt.yticks(np.arange(0, 81, 10))
 plt.legend((p1[0], p2[0]), ('values1', 'values2'))
 
 
+# Stacked bar count plot using pandas crosstab and plot functions
+# Used to look at counts of one variable broken down by another
+# Seaborn's countplot can do this too but cannot stack the bars
+pd.crosstab(index=df.var1, columns=df.var2).plot(kind='bar', stacked=True)
+
+
 # Add a legend with reversed label order
 handles, labels = ax.get_legend_handles_labels()
 ax.legend(handles[::-1], labels[::-1])
