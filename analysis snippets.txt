@@ -161,3 +161,10 @@ df.insert(0, 'variable', df.pop('variable'))
 # Can add .plot(kind='bar') to the end of the code below to turn the table into a plot
 
 pd.cut(x=df.var, bins=bins).value_counts().sort_index()
+
+
+# To show conditional 'row-wise' proportions among two categorical variables I can use groupby and value_counts with normalize=True
+df.groupby(by='var1').var2.value_counts(normalize=True)
+
+# Then using unstack will put it in a pivot table format
+df.groupby(by='var1').var2.value_counts(normalize=True).unstack()
