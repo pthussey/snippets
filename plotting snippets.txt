@@ -546,10 +546,18 @@ ax.legend(frameon=True, bbox_to_anchor=(1.04,1), loc="upper left")
 ax.tick_params(labelrotation=45)
 
 
+# Can rotate xticklabels in subplots of a seaborn FacetGrid as well
+# sns.catplot returns a FacetGrid object and set_xticklabels is one of FacetGrid's methods
+g = sns.catplot(kind='count', x='ID', col='var1', data=df)
+g.set_xticklabels(rotation=90)
+
+
 # Example of using seaborn FacetGrid
 # Set up the grid first and then map the kind of plot and the numerical variable
 # Can just change height to make the plots bigger,
 # or also use aspect as well to fully control size
+# Can find a list of FacetGrid methods to change things in the subplots here: https://seaborn.pydata.org/generated/seaborn.FacetGrid.html
+# add_legend is an example of one of these methods
 g = sns.FacetGrid(penguins, col="sex", height=3.5, aspect=.75)
 g.map(sns.histplot, 'bill_length_mm')
 # Can add a legend too if hue also used
