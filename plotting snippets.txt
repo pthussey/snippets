@@ -335,7 +335,7 @@ plt.legend((p1[0], p2[0]), ('values1', 'values2'))
 ax = pd.crosstab(index=df.var1, columns=df.var2).plot(kind='bar', stacked=True)
 
 
-# Stacked bar count plot using pandas crosstab and plot functions showing proportions
+# Stacked bar count plot to show proportions of one variable within another using pandas groupby, value_counts, unstack, and plot functions
 ax = df.groupby(by='var1').var2.value_counts(normalize=True).unstack().plot(kind='bar', stacked=True)
 
 
