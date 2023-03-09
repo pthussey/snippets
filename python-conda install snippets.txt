@@ -12,3 +12,9 @@ C:\Users\usr\miniconda3\Library\bin
 conda install pandas matplotlib seaborn scipy statsmodels
 * dependency packages like numpy also get installed with these
 * see the virtual environment snippets for details on how to install Jupyter notebook
+* if using PowerShell and activate base doesn't work then need to do the following:
+1. Open Powershell and browse to condabin folder in your conda installation directory, for example: C:\Users\<username>\anaconda3\condabin
+2. Run ./conda init powershell in that folder, and re-open the powershell.
+3. Please note: If you encountered ps1 cannot be loaded because running scripts is disabled on this system, simply run the Powershell as Administrator and enter the following: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+4. Restart the Powershell & Enjoy!
+from: https://stackoverflow.com/questions/64149680/how-to-activate-conda-environment-from-powershell
