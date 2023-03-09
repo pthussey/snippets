@@ -72,6 +72,10 @@ To restore a file from a previous commit
 git checkout [commit ID] -- path/to/file
 From this source: https://dev.to/lofiandcode/git-and-github-how-to-revert-a-single-file-dha
 
+To revert all uncommitted changes in a repository
+- navigate to the repo root directory
+- git checkout .
+
 List all tracked files in a repository
 git ls-tree -r master --name-only
 
