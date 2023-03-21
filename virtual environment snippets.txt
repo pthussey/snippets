@@ -37,6 +37,8 @@ step 3) conda clean --all
 To use pip within the environment to install packages (try to use conda install first, and use this only if it doesn't work)
 Must specify the path to install in a specific environment (replace 'user' and 'name_env'):
 C:\Users\user\miniconda3\envs\name_env\python.exe -m pip install
+*Shouldn't need to use a path, like above, if the environment to be installed to is already activated.
+*Tested this and using pip within an activated environment only installed the package in that active environment, not in the base envioronment.
 
 To view a pip requirements file from a conda environment
 pip list --format=freeze
