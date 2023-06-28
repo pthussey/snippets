@@ -77,6 +77,9 @@ python -m venv environment_name
 To activate the environment
 environment_name\Scripts\activate.bat
 
+To deactivate the environment
+deactivate
+
 To install packages
 pip install package_name
 
