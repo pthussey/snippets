@@ -256,3 +256,20 @@ def ResampleSurvival(resp, iters=101):
 
     low, high = thinkstats2.PercentileRows(ss_seq, [5, 95])
     thinkplot.FillBetween(ts, low, high, color='gray', label='90% CI')
+
+
+General process for performing multiple regression
+
+1) Find and deal with any NaN values in the variables of interest
+
+2) Convert binary categorical variables to 0 and 1
+
+3) Use get_dummies to convert categorical variables with three or more levels to separate columns
+   * Can use drop_first = True to use p-1 parameters
+   df_including_dummies = pd.get_dummies(data=df, columns=['var1', 'var2'], drop_first=True)
+
+4) Run my datastats.multivar variable mining functions to see which variables have the most effect individually on the response variable
+
+5) Run the multiple regression on all the variables and then try removing some to see if R2 can be raised.
+
+6) Use R2 and contextual understanding to determine the best model.

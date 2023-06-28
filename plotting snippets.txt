@@ -629,3 +629,23 @@ ax.axis('off')
 ax.set_title('Title')
 
 plt.show()
+
+
+# Add a colorbar next to a plot and remove the existing legend
+# A use case for this is adding a continuous numeric variable 'hue' to a seaborn scatterplot
+norm = plt.Normalize(possum_df.age.min(), possum_df.age.max())
+cmsm = plt.cm.ScalarMappable(cmap="Blues", norm=norm)
+cmsm.set_array([])
+fig.colorbar(cmsm, ax=ax, label='Age')
+ax.get_legend().remove()
+
+
+# Add a circle surrounding a particular point on a plot
+circle = plt.Circle(xy=(84.02,86.65), radius=0.5, fill=False, color='C1', lw=2)
+ax.add_artist(circle)
+
+
+# Add a rectangle surrounding a particular point on a plot
+# In this case also rotated it to make it appear as a diamond shape
+rect = plt.Rectangle(xy=(92.5,102.4), width=1, height=1, fill=False, angle=45, color='C1', lw=2)
+ax.add_artist(rect)
