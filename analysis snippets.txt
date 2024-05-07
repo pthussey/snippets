@@ -63,6 +63,10 @@ df.sort_index()
 print(df.iloc[idx].to_string())
 
 
+# Display all column values for one entry, based on a column condition
+print(df.loc[df['column name'] == 'value'].T.iloc[:,0].to_string())
+
+
 # Display all values of a Series
 * Can have any code that results in a Series in place of df['variable']
 print(df['variable'].to_string())
